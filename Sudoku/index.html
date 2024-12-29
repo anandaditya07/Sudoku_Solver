@@ -1,0 +1,38 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="style.css"> <!-- Optional CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku Solver</h1>
+        <form action="solve.jsp" method="post">
+            <table id="sudoku-grid">
+                <!-- Dynamic input fields for Sudoku grid -->
+                <script>
+                    for (let i = 0; i < 9; i++) {
+                        document.write("<tr>");
+                        for (let j = 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ; j < 9; j++) {
+                            document.write(
+                                `<td><input type="number" id="cell-${i}-${j}" name="cell-${i}-${j}" min="1" max="9"></td>`
+                            );
+                        }
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
+            <button type="submit">Solve</button>
+        </form>
+        <div id="error-message">
+            <% 
+                // Logic to display error messages or results after form submission
+                String errorMessage = request.getParameter("error");
+                if (errorMessage != null) {
+                    out.println("<p>" + errorMessage + "</p>");
+                }
+            %>
+        </div>
+    </div>
+</body>
+</html>
